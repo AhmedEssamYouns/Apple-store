@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import ProductsPage from './dashboard/manageProducts';
+import UsersPage from './dashboard/manageUsers';
+import DiscountCodesPage from './dashboard/manageCodes';
 // Import other components as needed
 
 const AdminPage = () => {
@@ -13,7 +15,10 @@ const AdminPage = () => {
         switch (activeTab) {
             case 'Products':
                 return <ProductsPage />;
-            // Add cases for other screens
+            case 'Users':
+                return <UsersPage />;
+            case 'Discount Codes':
+                return <DiscountCodesPage />
             default:
                 return null;
         }
@@ -22,17 +27,17 @@ const AdminPage = () => {
     return (
         <View style={styles.container}>
             <View style={styles.topBar}>
-                <Text style={styles.title}>Welcome Admin</Text>
+                <Text style={styles.title}>Admin panal</Text>
                 <View style={{ flexDirection: 'row', gap: 15 }}>
                     <FontAwesome name='comments' size={25}></FontAwesome>
                     <Feather name='log-out' size={25} onPress={() => router.replace('signIN')}></Feather>
                 </View>
             </View>
-            {renderScreen()} 
+            {renderScreen()}
             <View style={styles.bottomBar}>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => setActiveTab('Products')} 
+                    onPress={() => setActiveTab('Products')}
                 >
                     <Feather
                         name="shopping-bag"
@@ -43,16 +48,16 @@ const AdminPage = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => setActiveTab('Users')} 
+                    onPress={() => setActiveTab('Users')}
                 >
                     <FontAwesome
                         name="user"
                         size={20}
-                        color={activeTab === 'Users' ? '#1DA1F2' : '#657786'} 
+                        color={activeTab === 'Users' ? '#1DA1F2' : '#657786'}
                     />
                     <Text style={styles.buttonText}>Users</Text>
                 </TouchableOpacity>
-             
+
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => setActiveTab('Discount Codes')}
@@ -60,29 +65,29 @@ const AdminPage = () => {
                     <Feather
                         name="percent"
                         size={20}
-                        color={activeTab === 'Discount Codes' ? '#1DA1F2' : '#657786'} 
+                        color={activeTab === 'Discount Codes' ? '#1DA1F2' : '#657786'}
                     />
                     <Text style={styles.buttonText}>Discount</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => setActiveTab('Reviews')} 
+                    onPress={() => setActiveTab('Reviews')}
                 >
                     <FontAwesome
                         name="star"
                         size={20}
-                        color={activeTab === 'Reviews' ? '#1DA1F2' : '#657786'} 
+                        color={activeTab === 'Reviews' ? '#1DA1F2' : '#657786'}
                     />
                     <Text style={styles.buttonText}>Reviews</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => setActiveTab('Emails')} 
+                    onPress={() => setActiveTab('Emails')}
                 >
                     <Feather
                         name="mail"
                         size={20}
-                        color={activeTab === 'Emails' ? '#1DA1F2' : '#657786'} 
+                        color={activeTab === 'Emails' ? '#1DA1F2' : '#657786'}
                     />
                     <Text style={styles.buttonText}>Emails</Text>
                 </TouchableOpacity>
@@ -109,7 +114,7 @@ const styles = StyleSheet.create({
     topBar: {
         flexDirection: 'row',
         alignItems: 'center',
-        gap: 80,
+        gap: 130,
         width: '100%',
         alignContent: 'center',
         justifyContent: 'center',
