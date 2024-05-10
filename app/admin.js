@@ -9,6 +9,7 @@ import ReviewsPage from './dashboard/manageReviews';
 import { useFocusEffect } from 'expo-router';
 import { useCallback } from 'react';
 import ContactMessagesPage from './dashboard/manageEmails';
+import OrdersPage from './dashboard/manageOrders';
 // Import other components as needed
 
 const AdminPage = () => {
@@ -46,8 +47,10 @@ const AdminPage = () => {
             case 'Reviews':
                 return <ReviewsPage />
             case 'Emails':
-                return <ContactMessagesPage/>
-                    default:return null;
+                return <ContactMessagesPage />
+            case 'Orders':
+                return <OrdersPage />
+            default: return null;
         }
     };
 
