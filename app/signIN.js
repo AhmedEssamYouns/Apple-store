@@ -183,6 +183,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'SunshineRegular',
     color: '#111',
+  }, selectedCategory: {
+    backgroundColor: '#1DA1F2',
+    // Add any other styles you want for the selected category button
+  },
+
+  selectedFavorite: {
+    backgroundColor: '#1DA1F2',
+    // Add any other styles you want for the selected favorite button
+  },
+
+  selectedOffer: {
+    backgroundColor: '#1DA1F2',
+    // Add any other styles you want for the selected offer button
   },
   passwordContainer: {
     flexDirection: 'row',
