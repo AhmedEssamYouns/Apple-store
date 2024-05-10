@@ -33,8 +33,9 @@ const DiscountCodesPage = () => {
     };
 
     const handleSearchTermChange = (value) => {
-        setSearchTerm(value.toLowerCase());
+        setSearchTerm(value.trim().toLowerCase()); // Convert to lowercase
     };
+    
 
     const handleDeleteDiscountCode = async (discountCodeId) => {
         setIsLoading(true);
@@ -91,7 +92,10 @@ const DiscountCodesPage = () => {
     const handleDiscountAmountChange = (value) => {
         setNewDiscountAmount(value);
     };
-
+    const filteredDiscountCodes = discountCodes.filter((discount) =>
+        discount.code.toLowerCase().includes(searchTerm)
+    );
+    
     return (
         <View style={{ flex: 1, padding: 20, backgroundColor: '#F5F8FA' }}>
             <View>
@@ -130,8 +134,7 @@ const DiscountCodesPage = () => {
                 <Text style={styles.text}>No discount codes found.</Text>
             ) : (
                 <FlatList
-                    style={{ marginBottom: 100 }}
-                    data={discountCodes}
+                    data={filteredDiscountCodes}
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => (
                         <View style={styles.listItem}>
