@@ -1,16 +1,39 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, BackHandler } from 'react-native';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import ProductsPage from './dashboard/manageProducts';
 import UsersPage from './dashboard/manageUsers';
 import DiscountCodesPage from './dashboard/manageCodes';
 import ReviewsPage from './dashboard/manageReviews';
+import { useFocusEffect } from 'expo-router';
+import { useCallback } from 'react';
+import ContactMessagesPage from './dashboard/manageEmails';
 // Import other components as needed
 
 const AdminPage = () => {
     const [activeTab, setActiveTab] = useState('Products'); // State to track active tab
 
+    const handleBackButton = useCallback(() => {
+        if (activeTab === 'Products') {
+            BackHandler.exitApp();
+            return true; // disable going back
+        } else {
+            setActiveTab('Products');
+            return true; // disable going back
+        }
+    }, [activeTab]);
+
+    useFocusEffect(
+        React.useCallback(() => {
+
+            BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+
+            return () => {
+                BackHandler.removeEventListener('hardwareBackPress', handleBackButton);
+            };
+        }, [handleBackButton, activeTab])
+    );
     // Function to render screen based on active tab
     const renderScreen = () => {
         switch (activeTab) {
@@ -22,9 +45,9 @@ const AdminPage = () => {
                 return <DiscountCodesPage />
             case 'Reviews':
                 return <ReviewsPage />
-
-            default:
-                return null;
+            case 'Emails':
+                return <ContactMessagesPage/>
+                    default:return null;
         }
     };
 
