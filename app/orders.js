@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet, Alert, RefreshControl, ActivityIndicator } from 'react-native';
 import { collection, query, where, getDocs, doc, onSnapshot, deleteDoc, getDoc, updateDoc } from 'firebase/firestore';
-import { db,FIREBASE_AUTH } from './FirebaseConfig';
+import { db, FIREBASE_AUTH } from './FirebaseConfig';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Toast, ALERT_TYPE, AlertNotificationRoot } from 'react-native-alert-notification';
@@ -414,7 +414,7 @@ const OrderPage = () => {
                 <Text style={styles.po}><Text style={styles.poo}>address: </Text>{order.Address}</Text>
 
 
-              
+
 
                 <Text style={styles.p}>Total:  <Text style={styles.price}>${order.total}</Text></Text>
 
@@ -422,29 +422,36 @@ const OrderPage = () => {
                 {/* Render other order details as needed */}
                 <View style={styles.shippedContainer2}>
                 </View>
-                {order.done == 'yes' ? (
-                    <>
-                        <View style={styles.shippedContainer}>
-                            <Text style={[styles.shippedText2]}>Ordered at {new Date(order.timestamp).toLocaleDateString()} </Text>
-                            <View style={styles.shippedContainer3}>
-                                <Text style={styles.shippedText}>Shipped</Text>
-                                <Feather name="check-circle" size={24} color="#1DA1F2" />
+                {order.isReady == 'no' ? <View style={styles.shippedContainer}>
+                    <Text style={[styles.shippedText2]}>Ordered at {new Date(order.timestamp).toLocaleDateString()} </Text>
+                    <View style={styles.shippedContainer3}>
+                        <Text style={styles.shippedText}>getting ready</Text>
+                        <Feather name="package" size={24} color="#657786" />
+                    </View>
+                </View> : <>
+                    {order.done == 'yes' ? (
+                        <>
+                            <View style={styles.shippedContainer}>
+                                <Text style={[styles.shippedText2]}>Ordered at {new Date(order.timestamp).toLocaleDateString()} </Text>
+                                <View style={styles.shippedContainer3}>
+                                    <Text style={styles.shippedText}>Shipped</Text>
+                                    <Feather name="check-circle" size={24} color="#1DA1F2" />
+                                </View>
                             </View>
-                        </View>
-                    </>
-                ) : (
-                    <>
-                        <View style={styles.shippedContainer}>
-                            <Text style={[styles.shippedText2]}>Ordered at {new Date(order.timestamp).toLocaleDateString()} </Text>
-                            <View style={styles.shippedContainer3}>
-                                <Text style={[styles.shippedText, { color: '#657786' }]}>Shipping</Text>
-                                <MaterialCommunityIcons name="truck-delivery" size={24} color="#1DA1F2" />
+                        </>
+                    ) : (
+                        <>
+                            <View style={styles.shippedContainer}>
+                                <Text style={[styles.shippedText2]}>Ordered at {new Date(order.timestamp).toLocaleDateString()} </Text>
+                                <View style={styles.shippedContainer3}>
+                                    <Text style={[styles.shippedText, { color: '#657786' }]}>Shipping</Text>
+                                    <MaterialCommunityIcons name="truck-delivery" size={24} color="#1DA1F2" />
+                                </View>
                             </View>
-                        </View>
-                    </>
+                        </>
 
-                )}
-
+                    )}
+                </>}
             </View>
 
         );
@@ -510,7 +517,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingRight: 20,
         paddingLeft: 20,
-        paddingTop:20,
+        paddingTop: 20,
         backgroundColor: '#F5F8FA',
     },
     scrollview: {

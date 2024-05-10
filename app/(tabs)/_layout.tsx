@@ -81,7 +81,8 @@ export default function TabLayout() {
         // to prevent a hydration error in React Navigation v6.
         tabBarInactiveBackgroundColor: '#F5F8FA',
         tabBarActiveBackgroundColor: '#F5F8FA',
-        headerBackgroundContainerStyle: { backgroundColor: '#F5F8FA' }
+        headerBackgroundContainerStyle: { backgroundColor: '#F5F8FA' },
+        tabBarInactiveTintColor:"#657786"
       }}>
       <Tabs.Screen
         name="index"
@@ -97,6 +98,7 @@ export default function TabLayout() {
               <Feather
                 name='shopping-cart'
                 size={30}
+                color='#657786'
 
               />
               {cartTotal > 0 && (
@@ -123,7 +125,7 @@ export default function TabLayout() {
 
           ),
           headerLeft: () => (
-            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30 }}>
+            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30 , color:'#657786' }}>
               Home
             </Text>
           ),
@@ -143,7 +145,7 @@ export default function TabLayout() {
                 <Feather
                   name='shopping-cart'
                   size={30}
-
+                  color='#657786'
                 />
                 {cartTotal > 0 && (
                   <View style={{
@@ -169,7 +171,7 @@ export default function TabLayout() {
 
           ),
           headerLeft: () => (
-            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30 }}>
+            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30, color:'#657786' }}>
               Products
             </Text>
           ),
@@ -190,7 +192,7 @@ export default function TabLayout() {
                   <Feather
                     name='edit'
                     size={23}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 , color:'#657786'}}
                   />
                 )}
               </Pressable>
@@ -199,14 +201,14 @@ export default function TabLayout() {
                   <FontAwesome6
                     name="bars-staggered"
                     size={23}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1, color:'#657786' }}
                   />
                 )}
               </Pressable>
             </View>
           ),
           headerLeft: () => (
-            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 25 }}>
+            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 25, color:'#657786' }}>
               {user?.displayName}
             </Text>
 

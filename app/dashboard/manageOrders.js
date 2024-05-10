@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, ActivityIndicator, ScrollView, StyleSheet } from 'react-native';
 import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc, getDoc } from 'firebase/firestore';
 import { db } from '../FirebaseConfig';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
 
 function OrdersPage() {
     const [orders, setOrders] = useState([]);
@@ -224,12 +224,18 @@ function OrdersPage() {
                         <View>
                             {filteredOrders.map((order) => (
                                 <View key={order.id} style={styles.orderContainer}>
-                                    <Text style={styles.orderText}>ID: {order.id}</Text>
+                                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                        <Text style={styles.orderText}>ID: {order.id}</Text>
+                                        {order.isReady == 'no' ? <Feather name='package' size={23}></Feather> : (<>
+                                            {order.done == 'yes' ? <Feather name='check-circle' color='#1DA1F2' size={23} /> : <Feather name='truck' color='orange' size={23} />}
+                                        </>)}
+
+                                    </View>
                                     <Text style={styles.orderText}>Username: {order.username}</Text>
                                     <Text style={styles.orderText}>Address: {order.Address}</Text>
                                     <Text style={styles.orderText}>Date: {new Date(order.timestamp).toLocaleString()}</Text>
                                     <Text style={styles.orderText2}>Items:</Text>
-                                    <View style={{ backgroundColor: "white", padding: 5, margin: 3, borderRadius: 10 ,elevation:1 }}>
+                                    <View style={{ backgroundColor: "white", padding: 5, margin: 3, borderRadius: 10, elevation: 1 }}>
 
                                         {order.items.map((item) => (
                                             <Text key={item.productId} style={styles.orderText}>
@@ -241,7 +247,7 @@ function OrdersPage() {
                                     <Text style={styles.orderText}>Discount Code: {order.discountCode ? order.discountCode : 'No discount'}</Text>
                                     <Text style={styles.orderText}>Total: ${order.total}</Text>
                                     <Text style={styles.orderText2}>Order State:</Text>
-                                    <View style={{ backgroundColor: "white", padding: 5, margin: 3, borderRadius: 10,elevation:1 }}>
+                                    <View style={{ backgroundColor: "white", padding: 5, margin: 3, borderRadius: 10, elevation: 1 }}>
                                         <Text style={styles.orderText}>Ready: {order.isReady}</Text>
                                         <Text style={styles.orderText}>Done: {order.done}</Text>
                                     </View>
@@ -318,6 +324,9 @@ const styles = StyleSheet.create({
     },
     orderContainer: {
         marginBottom: 20,
+        paddingBottom: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#B9C6D0'
     },
     orderText: {
         fontFamily: 'SunshineRegular',
