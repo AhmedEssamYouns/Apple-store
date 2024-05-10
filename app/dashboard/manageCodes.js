@@ -139,7 +139,7 @@ const DiscountCodesPage = () => {
                     renderItem={({ item }) => (
                         <View style={styles.listItem}>
                             <Text style={styles.listItemText}>{item.code}</Text>
-                            <Text style={styles.listItemText}>{`${Number(item.amount * 100).toFixed(0)}%`}</Text>
+                            <Text style={styles.listItemText}>{`${Number(item.amount * 100)}%`}</Text>
                             <TouchableOpacity onPress={() => handleDeleteDiscountCode(item.code)} style={styles.deleteButton}>
                                 <Text style={styles.buttonText}>Delete</Text>
                             </TouchableOpacity>

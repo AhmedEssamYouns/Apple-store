@@ -72,7 +72,7 @@ const Balance = () => {
       setLoading(false);
       Toast.show({
         type: ALERT_TYPE.SUCCESS,
-        textBody: `$${amount} added to your balance successfully. Your new balance is $${newBalance.toFixed(2)}.`,
+        textBody: `$${amount} added to your balance successfully. Your new balance is $${newBalance}.`,
         autoClose: 3000,
         titleStyle: {
           fontFamily: "SunshineRegular",
@@ -162,7 +162,7 @@ const Balance = () => {
       setLoading2(false);
       Toast.show({
         type: ALERT_TYPE.SUCCESS,
-        textBody: `$${refundAmount} refunded from your balance successfully. Your new balance is $${newBalance.toFixed(2)}.`,
+        textBody: `$${refundAmount} refunded from your balance successfully. Your new balance is $${newBalance}.`,
         autoClose: 3000,
         titleStyle: {
           fontFamily: "SunshineRegular",
@@ -202,7 +202,7 @@ const Balance = () => {
       <AlertNotificationRoot>
         <View style={styles.container}>
 
-          <Text style={styles.title}>My Balance: ${userData ? userData.balance.toFixed(2) : '0.00'}</Text>
+          <Text style={styles.title}>My Balance: ${userData ? userData.balance : '0.00'}</Text>
           <View style={{
             backgroundColor: '#E1E8ED',
             borderRadius: 10,

@@ -285,7 +285,7 @@ const CartScreen = () => {
             borderRadius: 10,
             elevation: 5
           }}>
-            <Text style={styles.total}>Total price is <Text style={{ color: '#1DA1F2' }}>${totalPrice.toFixed(2)} </Text>!</Text>
+            <Text style={styles.total}>Total price is <Text style={{ color: '#1DA1F2' }}>${totalPrice} </Text>!</Text>
             <View style={{
               borderTopWidth: 0.5,
               borderTopColor: '#657786',

@@ -99,7 +99,7 @@ const CheckoutPage = () => {
           const newBalance = updatedUserData.balance;
           router.push('(tabs)');
           setLoading(false)
-          alert(`Order placed successfully. Your new balance is $${newBalance.toFixed(2)}.`);
+          alert(`Order placed successfully. Your new balance is $${newBalance}.`);
 
           cartItems.forEach(async (item) => {
             const product = products.find(p => p.id === item.id);
@@ -598,9 +598,9 @@ const CheckoutPage = () => {
         </View>
         <Text style={{ ...styles.itemQuantity, alignSelf: 'flex-end', textAlign: 'right' }}>
           {discount > 0 ? (
-            <Text style={styles.itemPrice2}>${lol.toFixed(2)}</Text>
+            <Text style={styles.itemPrice2}>${lol}</Text>
           ) :
-            <Text style={styles.itemPrice2}>${item.price.toFixed(2)}</Text>
+            <Text style={styles.itemPrice2}>${item.price}</Text>
           }</Text>
 
       </View>
@@ -619,15 +619,15 @@ const CheckoutPage = () => {
 
             <View style={styles.subtotalContainer}>
               <Text style={styles.subtotalText}>Subtotal:</Text>
-              <Text style={styles.subtotal}>${subtotal.toFixed(2)}</Text>
+              <Text style={styles.subtotal}>${subtotal}</Text>
             </View>
             <View style={styles.shippingContainer}>
               <Text style={styles.shippingText}>Shipping:</Text>
-              <Text style={styles.shipping}>${shipping.toFixed(2)}</Text>
+              <Text style={styles.shipping}>${shipping}</Text>
             </View>
             <View style={styles.totalContainer}>
               <Text style={styles.totalText}>Total:</Text>
-              <Text style={styles.total}>${total.toFixed(2)}</Text>
+              <Text style={styles.total}>${total}</Text>
             </View>
             {discountApplied == true ? (
               <View>
@@ -637,7 +637,7 @@ const CheckoutPage = () => {
                   subtotal changed from
                   <Text style={{ fontFamily: 'SunshineRegular' }}> ${subtotal2} </Text>
                   to
-                  <Text style={{ fontFamily: 'SunshineRegular' }}> ${subtotal.toFixed(2)}</Text></Text>
+                  <Text style={{ fontFamily: 'SunshineRegular' }}> ${subtotal}</Text></Text>
                 <TouchableOpacity style={[styles.totalText, { fontSize: 15, marginBottom: 15, alignSelf: 'center' }]} onPress={removeDiscount}>
                   <Text style={{
                     fontFamily: 'SunshineRegular',
@@ -799,7 +799,7 @@ const CheckoutPage = () => {
 
                           color: '#1DA1F2',
 
-                        }}>${userData ? userData.balance.toFixed(2) : '0.00'}</Text></Text>
+                        }}>${userData ? userData.balance : '0.00'}</Text></Text>
                       </View>
                     }
                   </>

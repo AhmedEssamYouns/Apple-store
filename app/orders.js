@@ -156,7 +156,7 @@ const OrderPage = () => {
                                     setOrders(orders.filter((order) => order.id !== orderId));
                                     Toast.show({
                                         type: ALERT_TYPE.SUCCESS,
-                                        textBody: `Order canceled and $${orderData.total.toFixed(2)} was added to your balance. Your current balance is $${userDoc.data().balance + orderData.total}.`,
+                                        textBody: `Order canceled and $${orderData.total} was added to your balance. Your current balance is $${userDoc.data().balance + orderData.total}.`,
                                         autoClose: 5000,
                                         titleStyle: {
                                             fontFamily: 'SunshineRegular',
@@ -225,7 +225,7 @@ const OrderPage = () => {
                                     setOrders(orders.filter((order) => order.id !== orderId));
                                     Toast.show({
                                         type: ALERT_TYPE.SUCCESS,
-                                        textBody: `Order canceled and $${orderData.total.toFixed(2)} was added to your balance. Your current balance is $${userDoc.data().balance + orderData.total}.`,
+                                        textBody: `Order canceled and $${orderData.total} was added to your balance. Your current balance is $${userDoc.data().balance + orderData.total}.`,
                                         autoClose: 5000,
                                         titleStyle: {
                                             fontFamily: 'SunshineRegular',
@@ -345,7 +345,7 @@ const OrderPage = () => {
                         <View style={{ flex: 1, alignItems: 'flex-start', width: 65 }}>
                             <Text style={{ fontFamily: 'SunshineRegular', color: '#657786', fontSize: 12 }}>
                                 <Text style={{ fontFamily: 'lonsfont', color: "#1DA1F2", fontSize: 12 }}>Price </Text>
-                                {zezo > 0 ? zezo.toFixed(0) : item.price}
+                                {zezo > 0 ? zezo : item.price}
                             </Text>
                         </View>
 
@@ -416,7 +416,7 @@ const OrderPage = () => {
 
               
 
-                <Text style={styles.p}>Total:  <Text style={styles.price}>${order.total.toFixed(2)}</Text></Text>
+                <Text style={styles.p}>Total:  <Text style={styles.price}>${order.total}</Text></Text>
 
 
                 {/* Render other order details as needed */}

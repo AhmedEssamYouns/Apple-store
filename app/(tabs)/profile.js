@@ -102,7 +102,7 @@ console.log(image,'   pro')
             style={{
               fontFamily: 'SunshineRegular',
               color: '#657786',
-            }}>${userData.balance.toFixed(2)}</Text>
+            }}>${userData.balance}</Text>
         </TouchableOpacity>
         <View style={styles.header}>
           <View style={styles.profile}>
