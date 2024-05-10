@@ -5,6 +5,7 @@ import { router } from 'expo-router';
 import ProductsPage from './dashboard/manageProducts';
 import UsersPage from './dashboard/manageUsers';
 import DiscountCodesPage from './dashboard/manageCodes';
+import ReviewsPage from './dashboard/manageReviews';
 // Import other components as needed
 
 const AdminPage = () => {
@@ -19,6 +20,9 @@ const AdminPage = () => {
                 return <UsersPage />;
             case 'Discount Codes':
                 return <DiscountCodesPage />
+            case 'Reviews':
+                return <ReviewsPage />
+
             default:
                 return null;
         }
