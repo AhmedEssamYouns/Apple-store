@@ -228,8 +228,9 @@ function OrdersPage() {
                                     <Text style={styles.orderText}>Username: {order.username}</Text>
                                     <Text style={styles.orderText}>Address: {order.Address}</Text>
                                     <Text style={styles.orderText}>Date: {new Date(order.timestamp).toLocaleString()}</Text>
-                                    <Text style={styles.orderText}>Items:</Text>
-                                    <View>
+                                    <Text style={styles.orderText2}>Items:</Text>
+                                    <View style={{ backgroundColor: "white", padding: 5, margin: 3, borderRadius: 10 ,elevation:1 }}>
+
                                         {order.items.map((item) => (
                                             <Text key={item.productId} style={styles.orderText}>
                                                 {item.name} x ({item.quantity}) - {item.price}
@@ -239,8 +240,8 @@ function OrdersPage() {
                                     <Text style={styles.orderText}>Payment Method: {order.paymentMethod}</Text>
                                     <Text style={styles.orderText}>Discount Code: {order.discountCode ? order.discountCode : 'No discount'}</Text>
                                     <Text style={styles.orderText}>Total: ${order.total}</Text>
-                                    <Text style={styles.orderText}>Order State:</Text>
-                                    <View>
+                                    <Text style={styles.orderText2}>Order State:</Text>
+                                    <View style={{ backgroundColor: "white", padding: 5, margin: 3, borderRadius: 10,elevation:1 }}>
                                         <Text style={styles.orderText}>Ready: {order.isReady}</Text>
                                         <Text style={styles.orderText}>Done: {order.done}</Text>
                                     </View>
@@ -320,6 +321,9 @@ const styles = StyleSheet.create({
     },
     orderText: {
         fontFamily: 'SunshineRegular',
+    },
+    orderText2: {
+        fontFamily: 'lonsfont',
     },
     buttonContainer: {
         flexDirection: 'row',
