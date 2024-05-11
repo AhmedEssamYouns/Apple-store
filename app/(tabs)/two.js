@@ -12,7 +12,7 @@ import { db, FIREBASE_AUTH } from '../FirebaseConfig';
 import { collection, addDoc, getDocs, getDoc, setDoc, doc, updateDoc, onSnapshot } from 'firebase/firestore';
 import { router } from 'expo-router';
 const TabTwoScreen = () => {
-LogBox.ignoreAllLogs()
+  LogBox.ignoreAllLogs()
   const [lower, setlow] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -258,12 +258,12 @@ LogBox.ignoreAllLogs()
 
   console.log(selectedCategory)
   return (
-    <ScrollView style={styles.container}>
-      <View  style={{ flexDirection: 'row', alignSelf: 'center', paddingTop: 20, }}>
-        <TouchableOpacity onPress={() => setSelectedCategory('')} style={{ backgroundColor: selectedCategory == '' ? '#E1E8ED': 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5}}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>All products</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelectedCategory('iphones')} style={{backgroundColor: selectedCategory == 'iphones' ? '#E1E8ED': 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5 }}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>iphones</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelectedCategory('watches')} style={{backgroundColor: selectedCategory == 'watches' ? '#E1E8ED': 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5 }}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>whatches</Text></TouchableOpacity>
-        <TouchableOpacity onPress={() => setSelectedCategory('macbooks')} style={{ backgroundColor: selectedCategory == 'macbooks' ? '#E1E8ED': 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5 }}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>Macbooks</Text></TouchableOpacity>
+    <View style={styles.container}>
+      <View style={{ flexDirection: 'row', alignSelf: 'center', paddingTop: 20, }}>
+        <TouchableOpacity onPress={() => setSelectedCategory('')} style={{ backgroundColor: selectedCategory == '' ? '#E1E8ED' : 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5 }}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>All products</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelectedCategory('iphones')} style={{ backgroundColor: selectedCategory == 'iphones' ? '#E1E8ED' : 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5 }}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>iphones</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelectedCategory('watches')} style={{ backgroundColor: selectedCategory == 'watches' ? '#E1E8ED' : 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5 }}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>whatches</Text></TouchableOpacity>
+        <TouchableOpacity onPress={() => setSelectedCategory('macbooks')} style={{ backgroundColor: selectedCategory == 'macbooks' ? '#E1E8ED' : 'white', padding: 6, elevation: 2, borderRadius: 10, margin: 5 }}><Text style={{ fontFamily: 'SunshineRegular', color: "#657786" }}>Macbooks</Text></TouchableOpacity>
       </View>
       <View style={{ alignSelf: 'center', paddingTop: 20 }}>
         <View style={styles.searchBarContainer}>
@@ -296,49 +296,50 @@ LogBox.ignoreAllLogs()
                 {selectedPrice}
               </Text>
             </Text>
+            <ScrollView>
+              <View style={styles.priceFilterContainer}>
 
-            <View style={styles.priceFilterContainer}>
 
+                <Picker
+                  selectedValue={selectedPrice}
+                  onValueChange={handlePriceChange}
+                  style={styles.priceFilterPicker}
+                  androidStyle={{ fontFamily: 'SunshineRegular' }}
+                >
+                  <Picker.Item
+                    label="All"
+                    value={null}
+                    color="#657786"
+                    style={styles.priceFilterPickerLabel}
+                  />
+                  <Picker.Item
+                    label="$0 - $499"
+                    value={499}
+                    color="#657786"
+                    style={styles.priceFilterPickerLabel}
+                  />
+                  <Picker.Item
+                    label="$500 - $999"
+                    value={999}
+                    color="#657786"
+                    style={styles.priceFilterPickerLabel}
+                  />
+                  <Picker.Item
+                    label="$1000+"
+                    value={1000}
+                    color="#657786"
+                    style={styles.priceFilterPickerLabel}
+                  />
+                  <Picker.Item
+                    label="Custom Range"
+                    value="custom"
+                    color="#657786"
+                    style={styles.priceFilterPickerLabel}
+                  />
+                </Picker>
 
-              <Picker
-                selectedValue={selectedPrice}
-                onValueChange={handlePriceChange}
-                style={styles.priceFilterPicker}
-                androidStyle={{ fontFamily: 'SunshineRegular' }}
-              >
-                <Picker.Item
-                  label="All"
-                  value={null}
-                  color="#657786"
-                  style={styles.priceFilterPickerLabel}
-                />
-                <Picker.Item
-                  label="$0 - $499"
-                  value={499}
-                  color="#657786"
-                  style={styles.priceFilterPickerLabel}
-                />
-                <Picker.Item
-                  label="$500 - $999"
-                  value={999}
-                  color="#657786"
-                  style={styles.priceFilterPickerLabel}
-                />
-                <Picker.Item
-                  label="$1000+"
-                  value={1000}
-                  color="#657786"
-                  style={styles.priceFilterPickerLabel}
-                />
-                <Picker.Item
-                  label="Custom Range"
-                  value="custom"
-                  color="#657786"
-                  style={styles.priceFilterPickerLabel}
-                />
-              </Picker>
-
-            </View>
+              </View>
+            </ScrollView>
           </View>
           <View style={{ flexDirection: 'column' }}>
             <Text style={styles.sortingMethodLabel}>Sort by: <Text style={{
@@ -421,7 +422,7 @@ LogBox.ignoreAllLogs()
           )}
         </>
       )}
-    </ScrollView>
+    </View>
 
   );
 };
@@ -430,6 +431,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5F8FA',
+    
   },
   customPriceRangeContainer: {
     flexDirection: 'row',
@@ -647,8 +649,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginLeft: 8,
-    width:45,
-    alignItems:'center'
+    width: 45,
+    alignItems: 'center'
   },
   addButton: {
     marginRight: 8

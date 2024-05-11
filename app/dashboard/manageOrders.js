@@ -216,7 +216,7 @@ function OrdersPage() {
             {loading ? (
                 <ActivityIndicator size="large" color="#1da1f2" style={{ marginTop: 20 }} />
             ) : (
-                <>
+                <View style={{marginBottom:150}}>
                     <Text style={styles.title}>{getTitle()}</Text>
                     {filteredOrders.length === 0 ? (
                         <Text>No orders found.</Text>
@@ -272,7 +272,7 @@ function OrdersPage() {
                             ))}
                         </View>
                     )}
-                </>
+                </View>
             )}
         </ScrollView>
     );
