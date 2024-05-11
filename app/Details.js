@@ -558,7 +558,7 @@ const product = useLocalSearchParams()
                     </View>
 
                     {averageRating ? (
-                        <View style={[styles.ratingContainer, { paddingBottom: 10, }]}>
+                        <View style={[styles.ratingContainer, { paddingBottom: 10,paddingTop:10 }]}>
                             {[...Array(Math.round(averageRating))].map((_, i) => (
                                 <Text key={i}>
                                     <Ionicons name="star" size={30} color="#657786" />
