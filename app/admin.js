@@ -148,7 +148,6 @@ const AdminPage = () => {
             <View style={styles.topBar}>
                 <Text style={styles.title}>Admin panal</Text>
                 <View style={{ flexDirection: 'row', gap: 15 }}>
-                    <FontAwesome name='comments' size={25}></FontAwesome>
                     <Feather name='log-out' size={25} onPress={() => router.replace('signIN')}></Feather>
                 </View>
             </View>

@@ -51,7 +51,8 @@ export default function App() {
   // Once the loading is complete, render the appropriate component based on login status
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
-      {isLoggedIn ? router.navigate('(tabs)') : <SignInScreen />}
+           {isLoggedIn ? router.navigate('(tabs)') : router.replace('signIN')}
+
     </View>
   );
 }

@@ -231,7 +231,7 @@ const CartScreen = () => {
           {cartItems.length === 0 ?
             <>
               <Text style={styles.noitems}>Your cart is empty</Text>
-              <Image style={styles.image1} source={require('./lol.png')} resizeMode='contain'></Image>
+              <Image style={styles.image1} source={{uri:"https://thimpress.com/wp-content/uploads/2022/12/Mobile-App-3.png"}} resizeMode='contain'></Image>
             </>
 
             :

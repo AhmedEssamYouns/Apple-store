@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FIREBASE_AUTH } from "@/app/FirebaseConfig";
 import { getAuth, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from "expo-router";
-
-
+import { useCallback } from "react";
+import { useFocusEffect } from "expo-router";
+import { BackHandler } from "react-native";
 const SignInScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
 
 
   const handleSignIn = async () => {
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     color: '#657786',
   }, font: {
     fontFamily: "lonsfont",
-    color:"#657786"
+    color: "#657786"
   },
   inputContainer: {
     marginBottom: 15,
