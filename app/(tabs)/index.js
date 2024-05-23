@@ -257,7 +257,7 @@ const TabOneScreen = () => {
         </TouchableOpacity>
 
       </View>
-     
+
     </ScrollView >
   );
 };
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    paddingBottom:100
+    paddingBottom: 100
   },
   socialIcon: {
     backgroundColor: '#E1E8ED',
