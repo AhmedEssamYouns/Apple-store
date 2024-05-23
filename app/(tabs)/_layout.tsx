@@ -26,15 +26,15 @@ export default function TabLayout() {
 
   useEffect(() => {
     let counter = 0;
-  
+
     const fetchCartData = () => {
       if (counter < 2) {
         const currentUser = FIREBASE_AUTH.currentUser;
-  
+
         if (currentUser) {
           const { uid } = currentUser;
           const cartRef = doc(db, "carts", uid);
-  
+
           onSnapshot(cartRef, (cartDoc) => {
             if (cartDoc.exists()) {
               const cartData = cartDoc.data();
@@ -49,11 +49,11 @@ export default function TabLayout() {
         clearInterval(interval); // Clear interval after fetching data twice
       }
     };
-  
+
     const interval = setInterval(fetchCartData, 1000); // Fetch data every one second
-  
+
     return () => clearInterval(interval); // Cleanup function to clear interval
-  
+
   }, []);
 
   const cartTotal = cartItems.reduce((acc, item) => {
@@ -82,7 +82,7 @@ export default function TabLayout() {
         tabBarInactiveBackgroundColor: '#F5F8FA',
         tabBarActiveBackgroundColor: '#F5F8FA',
         headerBackgroundContainerStyle: { backgroundColor: '#F5F8FA' },
-        tabBarInactiveTintColor:"#657786"
+        tabBarInactiveTintColor: "#657786"
       }}>
       <Tabs.Screen
         name="index"
@@ -92,40 +92,40 @@ export default function TabLayout() {
           tabBarActiveTintColor: "#1DA1F2",
           tabBarIcon: ({ color }) => <Feather name="home" style={{ marginBottom: -5, }} size={28} color={color} />,
           headerRight: () => (
-          
-            <Pressable style={{ marginRight: 20 }} onPress={()=>router.push('Cart')}>
-            <View style={{ flexDirection: 'row' }}>
-              <Feather
-                name='shopping-cart'
-                size={30}
-                color='#657786'
 
-              />
-              {cartTotal > 0 && (
-                <View style={{
-                  backgroundColor: '#1DA1F2',
-                  borderRadius: 15,
-                  top:-5,
-                  right:-10,
-                  height:20,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  position:'absolute'
-                }}>
-                  <Text style={{
-                    color: 'white',
-                    fontSize: 12,
-                    paddingHorizontal:8,
-                    fontWeight: 'bold',
-                  }}>{cartTotal}</Text>
-                </View>
+            <Pressable style={{ marginRight: 20 }} onPress={() => router.push('Cart')}>
+              <View style={{ flexDirection: 'row' }}>
+                <Feather
+                  name='shopping-cart'
+                  size={30}
+                  color='#657786'
+
+                />
+                {cartTotal > 0 && (
+                  <View style={{
+                    backgroundColor: '#1DA1F2',
+                    borderRadius: 15,
+                    top: -5,
+                    right: -10,
+                    height: 20,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    position: 'absolute'
+                  }}>
+                    <Text style={{
+                      color: 'white',
+                      fontSize: 12,
+                      paddingHorizontal: 8,
+                      fontWeight: 'bold',
+                    }}>{cartTotal}</Text>
+                  </View>
                 )}
               </View>
             </Pressable>
 
           ),
           headerLeft: () => (
-            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30 , color:'#657786' }}>
+            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30, color: '#657786' }}>
               Home
             </Text>
           ),
@@ -140,7 +140,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="tags" color={color} />,
           headerRight: () => (
 
-            <Pressable style={{ marginRight: 20 }} onPress={()=>router.push('Cart')}>
+            <Pressable style={{ marginRight: 20 }} onPress={() => router.push('Cart')}>
               <View style={{ flexDirection: 'row' }}>
                 <Feather
                   name='shopping-cart'
@@ -151,17 +151,17 @@ export default function TabLayout() {
                   <View style={{
                     backgroundColor: '#1DA1F2',
                     borderRadius: 15,
-                    top:-5,
-                    right:-10,
-                    height:20,
+                    top: -5,
+                    right: -10,
+                    height: 20,
                     justifyContent: 'center',
                     alignItems: 'center',
-                    position:'absolute'
+                    position: 'absolute'
                   }}>
                     <Text style={{
                       color: 'white',
                       fontSize: 12,
-                      paddingHorizontal:8,
+                      paddingHorizontal: 8,
                       fontWeight: 'bold',
                     }}>{cartTotal}</Text>
                   </View>
@@ -171,7 +171,7 @@ export default function TabLayout() {
 
           ),
           headerLeft: () => (
-            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30, color:'#657786' }}>
+            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 30, color: '#657786' }}>
               Products
             </Text>
           ),
@@ -192,7 +192,7 @@ export default function TabLayout() {
                   <Feather
                     name='edit'
                     size={23}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 , color:'#657786'}}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1, color: '#657786' }}
                   />
                 )}
               </Pressable>
@@ -201,14 +201,14 @@ export default function TabLayout() {
                   <FontAwesome6
                     name="bars-staggered"
                     size={23}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1, color:'#657786' }}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1, color: '#657786' }}
                   />
                 )}
               </Pressable>
             </View>
           ),
           headerLeft: () => (
-            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 25, color:'#657786' }}>
+            <Text style={{ fontFamily: 'SunshineRegular', left: 15, fontSize: 25, color: '#657786' }}>
               {user?.displayName}
             </Text>
 
